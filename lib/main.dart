@@ -11,8 +11,6 @@ import 'Layout/ChangePage/Data/BlocPageRebuild.dart';
 import 'Layout/ChangePage/switchPage.dart';
 //--------------------------------------------- Bloc
 
-
-
 void main() {
   runApp(MyApp());
 }
@@ -82,6 +80,3 @@ Future<bool> blockBack() async {
         BlocProvider.of<SwPageCubit>(contextBG).togglePage(lastPage); */
   return true;
 }
-
-
- 

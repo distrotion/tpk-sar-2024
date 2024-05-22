@@ -642,6 +642,12 @@ class _ICPState extends State<ICP> {
                     widthC2,
                   ),
                   DataColumn(label: _verticalDivider2),
+                  headerColumn(
+                    'SUBCODE',
+                    'Re print',
+                    widthC13,
+                  ),
+                  DataColumn(label: _verticalDivider),
                   headerColumn('WEIGHT(g)', 'WEIGHT(g)', widthC3),
                   DataColumn(label: _verticalDivider),
                   headerColumn(
@@ -693,6 +699,12 @@ class _ICPState extends State<ICP> {
                     widthC13,
                   ),
                   DataColumn(label: _verticalDivider2),
+                  headerColumn(
+                    'SUBCODE',
+                    'Re print',
+                    widthC13,
+                  ),
+                  DataColumn(label: _verticalDivider),
                   headerColumn('WEIGHT(g)(2)', 'WEIGHT(g)', widthC3),
                   DataColumn(label: _verticalDivider),
                   headerColumn(
@@ -775,6 +787,23 @@ class _ICPState extends State<ICP> {
                             ),
                           ),
                           DataCell(_verticalDivider2),
+                          DataCell(
+                            Container(
+                              width: widthC13,
+                              child: Center(
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.print,
+                                    color: Colors.blue,
+                                  ),
+                                  onPressed: () {
+                                    // saveResult(index);
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
                           DataCell(
                             Container(
                               width: widthC3,
@@ -1007,6 +1036,23 @@ class _ICPState extends State<ICP> {
                             ),
                           ),
                           DataCell(_verticalDivider2),
+                          DataCell(
+                            Container(
+                              width: widthC13,
+                              child: Center(
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.print,
+                                    color: Colors.blue,
+                                  ),
+                                  onPressed: () {
+                                    // saveResult(index);
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
                           DataCell(
                             Container(
                               width: widthC3,
