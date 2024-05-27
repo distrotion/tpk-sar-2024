@@ -1,4 +1,5 @@
 import 'package:cool_alert/cool_alert.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -253,6 +254,12 @@ class _TOCState extends State<TOC> {
                     widthC2,
                   ),
                   DataColumn(label: _verticalDivider2),
+                  headerColumn(
+                    'SUBCODE',
+                    'Re print',
+                    widthC13,
+                  ),
+                  DataColumn(label: _verticalDivider2),
                   headerColumn('TC\nVIAL', 'TC VIAL', widthC3),
                   DataColumn(label: _verticalDivider),
                   headerColumn('TC\nDILUTION', 'TC DILUTION TIMES', widthC3),
@@ -303,6 +310,12 @@ class _TOCState extends State<TOC> {
                     widthC17,
                   ),
                   DataColumn(label: _verticalDivider2),
+                  headerColumn(
+                    'SUBCODE',
+                    'Re print',
+                    widthC13,
+                  ),
+                  DataColumn(label: _verticalDivider),
                   headerColumn('TC\nVIAL\n(2)', 'TC VIAL', widthC10),
                   DataColumn(label: _verticalDivider),
                   headerColumn(
@@ -386,6 +399,40 @@ class _TOCState extends State<TOC> {
                             ),
                           ),
                           DataCell(_verticalDivider2),
+                          DataCell(
+                            Container(
+                              width: widthC13,
+                              child: Center(
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.print,
+                                    color: Colors.blue,
+                                  ),
+                                  onPressed: () {
+                                    // saveResult(index);
+
+                                    Dio().post(
+                                      'http://172.23.10.34:2500/printsubtag',
+                                      data: {
+                                        "reqNo": dataTOCInput[index].sampleCode,
+                                        "itemName":
+                                            dataTOCInput[index].itemName,
+                                        "dilutionTime": dataTOCInput[index]
+                                            .tC_DilutionTime_1
+                                            .toString(),
+                                        "R": "R1",
+                                        "custFull":
+                                            dataTOCInput[index].custFull,
+                                        "sampleType":
+                                            dataTOCInput[index].sampleType,
+                                      },
+                                    ).then((value) {});
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
                           DataCell(
                             Container(
                               width: widthC3,
@@ -624,6 +671,39 @@ class _TOCState extends State<TOC> {
                             ),
                           ),
                           DataCell(_verticalDivider2),
+                          DataCell(
+                            Container(
+                              width: widthC13,
+                              child: Center(
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.print,
+                                    color: Colors.blue,
+                                  ),
+                                  onPressed: () {
+                                    // saveResult(index);
+                                    Dio().post(
+                                      'http://172.23.10.34:2500/printsubtag',
+                                      data: {
+                                        "reqNo": dataTOCInput[index].sampleCode,
+                                        "itemName":
+                                            dataTOCInput[index].itemName,
+                                        "dilutionTime": dataTOCInput[index]
+                                            .tC_DilutionTime_1
+                                            .toString(),
+                                        "R": "R2",
+                                        "custFull":
+                                            dataTOCInput[index].custFull,
+                                        "sampleType":
+                                            dataTOCInput[index].sampleType,
+                                      },
+                                    ).then((value) {});
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
                           DataCell(
                             Container(
                               width: widthC10,

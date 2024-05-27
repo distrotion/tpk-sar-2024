@@ -73,6 +73,7 @@ dependencies:
   syncfusion_officechart: ^21.2.3
   screenshot: ^2.0.0
   image_downloader_web: ^2.0.2
+  dio: ^5.4.3+1
 dev_dependencies:
   flutter_test:
     sdk: flutter

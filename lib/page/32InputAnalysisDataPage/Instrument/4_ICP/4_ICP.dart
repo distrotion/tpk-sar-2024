@@ -1,4 +1,5 @@
 import 'package:cool_alert/cool_alert.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -798,6 +799,23 @@ class _ICPState extends State<ICP> {
                                   ),
                                   onPressed: () {
                                     // saveResult(index);
+
+                                    Dio().post(
+                                      'http://172.23.10.34:2500/printsubtag',
+                                      data: {
+                                        "reqNo": dataICPInput[index].sampleCode,
+                                        "itemName":
+                                            dataICPInput[index].itemName,
+                                        "dilutionTime": dataICPInput[index]
+                                            .dilutionTime_1
+                                            .toString(),
+                                        "R": "R1",
+                                        "custFull":
+                                            dataICPInput[index].custFull,
+                                        "sampleType":
+                                            dataICPInput[index].sampleType,
+                                      },
+                                    ).then((value) {});
                                   },
                                 ),
                               ),
@@ -1047,6 +1065,22 @@ class _ICPState extends State<ICP> {
                                   ),
                                   onPressed: () {
                                     // saveResult(index);
+                                    Dio().post(
+                                      'http://172.23.10.34:2500/printsubtag',
+                                      data: {
+                                        "reqNo": dataICPInput[index].sampleCode,
+                                        "itemName":
+                                            dataICPInput[index].itemName,
+                                        "dilutionTime": dataICPInput[index]
+                                            .dilutionTime_2
+                                            .toString(),
+                                        "R": "R2",
+                                        "custFull":
+                                            dataICPInput[index].custFull,
+                                        "sampleType":
+                                            dataICPInput[index].sampleType,
+                                      },
+                                    ).then((value) {});
                                   },
                                 ),
                               ),
