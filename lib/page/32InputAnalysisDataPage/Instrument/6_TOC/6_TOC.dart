@@ -412,14 +412,16 @@ class _TOCState extends State<TOC> {
                                     // saveResult(index);
 
                                     Dio().post(
-                                      'http://172.23.10.34:2500/printsubtag',
+                                      'http://172.23.10.34:2500/printsubtag_TOC',
                                       data: {
                                         "reqNo": dataTOCInput[index].sampleCode,
                                         "itemName":
                                             dataTOCInput[index].itemName,
-                                        "dilutionTime": dataTOCInput[index]
+                                        "dilutionTimetc": dataTOCInput[index]
                                             .tC_DilutionTime_1
                                             .toString(),
+                                        "dilutionTimeic": dataTOCInput[index]
+                                            .iC_DilutionTime_1,
                                         "R": "R1",
                                         "custFull":
                                             dataTOCInput[index].custFull,
@@ -683,13 +685,16 @@ class _TOCState extends State<TOC> {
                                   onPressed: () {
                                     // saveResult(index);
                                     Dio().post(
-                                      'http://172.23.10.34:2500/printsubtag',
+                                      'http://172.23.10.34:2500/printsubtag_TOC',
                                       data: {
                                         "reqNo": dataTOCInput[index].sampleCode,
                                         "itemName":
                                             dataTOCInput[index].itemName,
-                                        "dilutionTime": dataTOCInput[index]
-                                            .tC_DilutionTime_1
+                                        "dilutionTimetc": dataTOCInput[index]
+                                            .tC_DilutionTime_2
+                                            .toString(),
+                                        "dilutionTimeic": dataTOCInput[index]
+                                            .iC_DilutionTime_2
                                             .toString(),
                                         "R": "R2",
                                         "custFull":

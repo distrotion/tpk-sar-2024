@@ -801,7 +801,7 @@ class _ICPState extends State<ICP> {
                                     // saveResult(index);
 
                                     Dio().post(
-                                      'http://172.23.10.34:2500/printsubtag',
+                                      'http://172.23.10.34:2500/printsubtag_ICP',
                                       data: {
                                         "reqNo": dataICPInput[index].sampleCode,
                                         "itemName":
@@ -1066,7 +1066,7 @@ class _ICPState extends State<ICP> {
                                   onPressed: () {
                                     // saveResult(index);
                                     Dio().post(
-                                      'http://172.23.10.34:2500/printsubtag',
+                                      'http://172.23.10.34:2500/printsubtag_ICP',
                                       data: {
                                         "reqNo": dataICPInput[index].sampleCode,
                                         "itemName":

@@ -383,17 +383,19 @@ class _XRFState extends State<XRF> {
                                     // saveResult(index);
 
                                     Dio().post(
-                                      'http://172.23.10.34:2500/printsubtag',
+                                      'http://172.23.10.34:2500/printsubtag_XRF',
                                       data: {
                                         "reqNo": dataXRFInput[index].sampleCode,
                                         "itemName":
                                             dataXRFInput[index].itemName,
-                                        "dilutionTime": "000",
+                                        "itemNo": dataXRFInput[index].itemNo,
                                         "R": "R1",
                                         "custFull":
                                             dataXRFInput[index].custFull,
-                                        "sampleType":
-                                            dataXRFInput[index].sampleType,
+                                        "position":
+                                            dataXRFInput[index].position,
+                                        "remarkNo":
+                                            dataXRFInput[index].remarkNo,
                                       },
                                     ).then((value) {});
                                   },
@@ -531,17 +533,19 @@ class _XRFState extends State<XRF> {
                                   onPressed: () {
                                     // saveResult(index);
                                     Dio().post(
-                                      'http://172.23.10.34:2500/printsubtag',
+                                      'http://172.23.10.34:2500/printsubtag_XRF',
                                       data: {
                                         "reqNo": dataXRFInput[index].sampleCode,
                                         "itemName":
                                             dataXRFInput[index].itemName,
-                                        "dilutionTime": "000",
+                                        "itemNo": dataXRFInput[index].itemNo,
                                         "R": "R2",
                                         "custFull":
                                             dataXRFInput[index].custFull,
-                                        "sampleType":
-                                            dataXRFInput[index].sampleType,
+                                        "position":
+                                            dataXRFInput[index].position,
+                                        "remarkNo":
+                                            dataXRFInput[index].remarkNo,
                                       },
                                     ).then((value) {});
                                   },
