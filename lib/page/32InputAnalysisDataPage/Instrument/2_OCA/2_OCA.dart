@@ -1,4 +1,5 @@
 import 'package:cool_alert/cool_alert.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -160,7 +161,7 @@ class _OCAState extends State<OCA> {
             dataOCAInput[index].userAnalysisBranch = userBranch;
             dataOCAsave.add(dataOCAInput[index]);
             context.read<ManageDataOCA>().add(OCAEvent.saveOCAData);
-          //  Navigator.pop(context);
+            //  Navigator.pop(context);
           });
     } else {
       CoolAlert.show(
@@ -240,6 +241,12 @@ class _OCAState extends State<OCA> {
                     'DATA/CHART',
                     widthC2,
                   ),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
+                    'SUBCODE',
+                    'Re print',
+                    widthC13,
+                  ),
                   DataColumn(label: _verticalDivider2),
                   headerColumn(
                     'Abs@260\n nm',
@@ -301,6 +308,12 @@ class _OCAState extends State<OCA> {
                     'SAVE',
                     'SAVE',
                     widthC21,
+                  ),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
+                    'SUBCODE',
+                    'Re print',
+                    widthC13,
                   ),
                   DataColumn(label: _verticalDivider2),
                   headerColumn(
@@ -393,6 +406,43 @@ class _OCAState extends State<OCA> {
                                           dataOCAInput[index].stdMin.toString(),
                                           context);
                                     });
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider2),
+                          DataCell(
+                            Container(
+                              width: widthC13,
+                              child: Center(
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.print,
+                                    color: Colors.blue,
+                                  ),
+                                  onPressed: () {
+                                    // saveResult(index);
+
+                                    Dio().post(
+                                      'http://172.23.10.34:2500/printsubtag_OCA',
+                                      data: {
+                                        "reqNo": dataOCAInput[index].sampleCode,
+                                        "itemName":
+                                            dataOCAInput[index].itemName,
+                                        // "dilutionTime": dataOCAInput[index]
+                                        //     .dilutionTime_1
+                                        //     .toString(),
+                                        "R": "R1",
+                                        "custFull":
+                                            dataOCAInput[index].custFull,
+                                        "sampleType":
+                                            dataOCAInput[index].sampleType,
+                                        "sampleTank":
+                                            dataOCAInput[index].sampleTank,
+                                        "plant": userBranch,
+                                      },
+                                    ).then((value) {});
                                   },
                                 ),
                               ),
@@ -581,6 +631,43 @@ class _OCAState extends State<OCA> {
                                   dataOCAInput[index].resultRemark_1 =
                                       value.toString();
                                 },
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider2),
+                          DataCell(
+                            Container(
+                              width: widthC13,
+                              child: Center(
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.print,
+                                    color: Colors.blue,
+                                  ),
+                                  onPressed: () {
+                                    // saveResult(index);
+
+                                    Dio().post(
+                                      'http://172.23.10.34:2500/printsubtag_OCA',
+                                      data: {
+                                        "reqNo": dataOCAInput[index].sampleCode,
+                                        "itemName":
+                                            dataOCAInput[index].itemName,
+                                        // "dilutionTime": dataOCAInput[index]
+                                        //     .dilutionTime_2
+                                        //     .toString(),
+                                        "R": "R2",
+                                        "custFull":
+                                            dataOCAInput[index].custFull,
+                                        "sampleType":
+                                            dataOCAInput[index].sampleType,
+                                        "sampleTank":
+                                            dataOCAInput[index].sampleTank,
+                                        "plant": userBranch,
+                                      },
+                                    ).then((value) {});
+                                  },
+                                ),
                               ),
                             ),
                           ),

@@ -1,4 +1,5 @@
 import 'package:cool_alert/cool_alert.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -223,6 +224,12 @@ class _CnUVState extends State<CnUV> {
                     'DATA/CHART',
                     widthC2,
                   ),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
+                    'SUBCODE',
+                    'Re print',
+                    widthC13,
+                  ),
                   DataColumn(label: _verticalDivider2),
                   headerColumn(
                     'DILUTION TIME',
@@ -248,6 +255,12 @@ class _CnUVState extends State<CnUV> {
                     'REMARK',
                     'REMARK RESULT',
                     widthC7,
+                  ),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
+                    'SUBCODE',
+                    'Re print',
+                    widthC13,
                   ),
                   DataColumn(label: _verticalDivider),
                   headerColumn(
@@ -332,6 +345,44 @@ class _CnUVState extends State<CnUV> {
                                               .toString(),
                                           context);
                                     });
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider2),
+                          DataCell(
+                            Container(
+                              width: widthC13,
+                              child: Center(
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.print,
+                                    color: Colors.blue,
+                                  ),
+                                  onPressed: () {
+                                    // saveResult(index);
+
+                                    Dio().post(
+                                      'http://172.23.10.34:2500/printsubtag_CuUV',
+                                      data: {
+                                        "reqNo":
+                                            dataCnUVInput[index].sampleCode,
+                                        "itemName":
+                                            dataCnUVInput[index].itemName,
+                                        "dilutionTime": dataCnUVInput[index]
+                                            .dilutionTime_1
+                                            .toString(),
+                                        "R": "R1",
+                                        "custFull":
+                                            dataCnUVInput[index].custFull,
+                                        "sampleType":
+                                            dataCnUVInput[index].sampleType,
+                                        "sampleTank":
+                                            dataCnUVInput[index].sampleTank,
+                                        "plant": userBranch,
+                                      },
+                                    ).then((value) {});
                                   },
                                 ),
                               ),
@@ -440,6 +491,43 @@ class _CnUVState extends State<CnUV> {
                                   dataCnUVInput[index].resultRemark_1 =
                                       value.toString();
                                 },
+                              ),
+                            ),
+                          ),
+                          DataCell(
+                            Container(
+                              width: widthC13,
+                              child: Center(
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.print,
+                                    color: Colors.blue,
+                                  ),
+                                  onPressed: () {
+                                    // saveResult(index);
+
+                                    Dio().post(
+                                      'http://172.23.10.34:2500/printsubtag_CuUV',
+                                      data: {
+                                        "reqNo":
+                                            dataCnUVInput[index].sampleCode,
+                                        "itemName":
+                                            dataCnUVInput[index].itemName,
+                                        "dilutionTime": dataCnUVInput[index]
+                                            .dilutionTime_2
+                                            .toString(),
+                                        "R": "R2",
+                                        "custFull":
+                                            dataCnUVInput[index].custFull,
+                                        "sampleType":
+                                            dataCnUVInput[index].sampleType,
+                                        "sampleTank":
+                                            dataCnUVInput[index].sampleTank,
+                                        "plant": userBranch,
+                                      },
+                                    ).then((value) {});
+                                  },
+                                ),
                               ),
                             ),
                           ),

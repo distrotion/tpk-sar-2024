@@ -1,4 +1,5 @@
 import 'package:cool_alert/cool_alert.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -6,7 +7,6 @@ import 'package:tpk_login_arsa_01/Global/global_var.dart';
 import 'package:tpk_login_arsa_01/page/20SubPage/HistoryChart/HistoryChart.dart';
 import 'package:tpk_login_arsa_01/page/32InputAnalysisDataPage/Instrument/5_IC/data/5_IC_bloc.dart';
 import 'package:tpk_login_arsa_01/page/32InputAnalysisDataPage/Instrument/5_IC/data/5_IC_event.dart';
-
 
 class Instrument_IC extends StatelessWidget {
   double headHeight = 0;
@@ -171,7 +171,7 @@ class _ICState extends State<IC> {
             dataICInput[index].userAnalysisBranch = userBranch;
             dataICsave.add(dataICInput[index]);
             context.read<ManageDataIC>().add(ICEvent.saveICData);
-          //  Navigator.pop(context);
+            //  Navigator.pop(context);
           });
     } else {
       CoolAlert.show(
@@ -244,6 +244,12 @@ class _ICState extends State<IC> {
                     'DATA/CHART',
                     widthC2,
                   ),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
+                    'SUBCODE',
+                    'Re print',
+                    widthC13,
+                  ),
                   DataColumn(label: _verticalDivider2),
                   headerColumn('DILUTION \n TIMES', 'DILUTION TIMES', widthC3),
                   DataColumn(label: _verticalDivider),
@@ -280,6 +286,12 @@ class _ICState extends State<IC> {
                   headerColumn(
                     'SAVE',
                     'SAVE',
+                    widthC13,
+                  ),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
+                    'SUBCODE',
+                    'Re print',
                     widthC13,
                   ),
                   DataColumn(label: _verticalDivider2),
@@ -325,7 +337,9 @@ class _ICState extends State<IC> {
                               child: Text(dataICInput[index].sampleRemark),
                             ),
                           ),
+
                           DataCell(_verticalDivider),
+
                           DataCell(
                             Container(
                               width: widthC2,
@@ -346,6 +360,41 @@ class _ICState extends State<IC> {
                                           dataICInput[index].stdMin.toString(),
                                           context);
                                     });
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider2),
+                          DataCell(
+                            Container(
+                              width: widthC13,
+                              child: Center(
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.print,
+                                    color: Colors.blue,
+                                  ),
+                                  onPressed: () {
+                                    // saveResult(index);
+
+                                    Dio().post(
+                                      'http://172.23.10.34:2500/printsubtag_IC',
+                                      data: {
+                                        "reqNo": dataICInput[index].sampleCode,
+                                        "itemName": dataICInput[index].itemName,
+                                        "dilutionTime": dataICInput[index]
+                                            .dilutionTime_1
+                                            .toString(),
+                                        "R": "R1",
+                                        "custFull": dataICInput[index].custFull,
+                                        "sampleType":
+                                            dataICInput[index].sampleType,
+                                        "sampleTank":
+                                            dataICInput[index].sampleTank,
+                                        "plant": userBranch,
+                                      },
+                                    ).then((value) {});
                                   },
                                 ),
                               ),
@@ -418,7 +467,7 @@ class _ICState extends State<IC> {
                                 //textInputAction: TextInputAction.next,
                                 style: styleDataInTable,
                                 decoration: formField(),
-                                
+
                                 name: '${index}_3',
                                 //enabled: false,
                                 key:
@@ -467,7 +516,6 @@ class _ICState extends State<IC> {
                               //height: fieldHeight,
                               child: FormBuilderTextField(
                                 textInputAction: TextInputAction.done,
-                                
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_5',
@@ -516,6 +564,41 @@ class _ICState extends State<IC> {
                             ),
                           ),
                           DataCell(_verticalDivider2),
+                          DataCell(
+                            Container(
+                              width: widthC13,
+                              child: Center(
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.print,
+                                    color: Colors.blue,
+                                  ),
+                                  onPressed: () {
+                                    // saveResult(index);
+
+                                    Dio().post(
+                                      'http://172.23.10.34:2500/printsubtag_IC',
+                                      data: {
+                                        "reqNo": dataICInput[index].sampleCode,
+                                        "itemName": dataICInput[index].itemName,
+                                        "dilutionTime": dataICInput[index]
+                                            .dilutionTime_2
+                                            .toString(),
+                                        "R": "R2",
+                                        "custFull": dataICInput[index].custFull,
+                                        "sampleType":
+                                            dataICInput[index].sampleType,
+                                        "sampleTank":
+                                            dataICInput[index].sampleTank,
+                                        "plant": userBranch,
+                                      },
+                                    ).then((value) {});
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
                           DataCell(
                             Container(
                               width: widthC9,
@@ -569,7 +652,7 @@ class _ICState extends State<IC> {
                                 //textInputAction: TextInputAction.next,
                                 style: styleDataInTable,
                                 decoration: formField(),
-                                
+
                                 name: '${index}_8',
                                 //enabled: false,
                                 key:
@@ -592,7 +675,6 @@ class _ICState extends State<IC> {
                               //height: fieldHeight,
                               child: FormBuilderTextField(
                                 textInputAction: TextInputAction.next,
-                                
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_9',

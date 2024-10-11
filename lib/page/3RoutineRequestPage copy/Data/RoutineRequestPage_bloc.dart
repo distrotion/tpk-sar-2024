@@ -111,7 +111,7 @@ Stream<int> createRequest() async* {
     'requestData': routineDataSQLToJson(requestData),
     'sampleData': sampleDataSQLToJson(sampleData),
     'samplePrint': jsonEncode(routineSamplePrint),
-    'printer':routinePrinter,
+    'printer': routinePrinter,
   };
   print("increateRequest");
   final response =
@@ -120,13 +120,13 @@ Stream<int> createRequest() async* {
   if (response.statusCode == 200) {
     print("In Future DataGet : ${response.body}");
     CoolAlert.show(
-        width: 150,
-        context: contextBG,
-        type: CoolAlertType.success,
-        //title: 'Oops...',
-        text: 'REQUEST NUMBER ${response.body}',
-        loopAnimation: false,
-      );
+      width: 150,
+      context: contextBG,
+      type: CoolAlertType.success,
+      //title: 'Oops...',
+      text: 'REQUEST NUMBER ${response.body}',
+      loopAnimation: false,
+    );
     yield 3;
   } else {
     throw Exception('Failed to load posts');

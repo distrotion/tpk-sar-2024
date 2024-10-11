@@ -427,6 +427,7 @@ class _TOCState extends State<TOC> {
                                             dataTOCInput[index].custFull,
                                         "sampleType":
                                             dataTOCInput[index].sampleType,
+                                        "plant": userBranch,
                                       },
                                     ).then((value) {});
                                   },
@@ -701,6 +702,7 @@ class _TOCState extends State<TOC> {
                                             dataTOCInput[index].custFull,
                                         "sampleType":
                                             dataTOCInput[index].sampleType,
+                                        "plant": userBranch,
                                       },
                                     ).then((value) {});
                                   },

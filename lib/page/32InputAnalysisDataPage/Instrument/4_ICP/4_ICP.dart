@@ -814,6 +814,7 @@ class _ICPState extends State<ICP> {
                                             dataICPInput[index].custFull,
                                         "sampleType":
                                             dataICPInput[index].sampleType,
+                                        "plant": userBranch,
                                       },
                                     ).then((value) {});
                                   },
@@ -1079,6 +1080,7 @@ class _ICPState extends State<ICP> {
                                             dataICPInput[index].custFull,
                                         "sampleType":
                                             dataICPInput[index].sampleType,
+                                        "plant": userBranch,
                                       },
                                     ).then((value) {});
                                   },
