@@ -318,7 +318,7 @@ class _DataSampleReceiveState extends State<DataSampleReceive> {
         contextReceiveSamplePage
             .read<ManageDataReceiveSample>()
             .add(ReceiveSampleEvent.fetchRequestData);
-       // Navigator.pop(context);
+        // Navigator.pop(context);
       },
       onCancelBtnTap: () {
         //Navigator.pop(context);
@@ -754,7 +754,7 @@ class _DataSampleReceiveState extends State<DataSampleReceive> {
                           child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 textStyle: styledata,
-                                primary: Colors.blue,
+                                // primary: Colors.blue,
                               ),
                               child: Text("RECEIVE SAMPLE"),
                               onPressed: () {
@@ -766,7 +766,7 @@ class _DataSampleReceiveState extends State<DataSampleReceive> {
                           child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 textStyle: styledata,
-                                primary: Colors.orange,
+                                // primary: Colors.orange,
                               ),
                               child: Text("REJECT SAMPLE"),
                               onPressed: () {

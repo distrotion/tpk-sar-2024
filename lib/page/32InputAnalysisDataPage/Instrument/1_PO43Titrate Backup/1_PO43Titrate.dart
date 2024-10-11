@@ -800,7 +800,7 @@ class _PO43TitrateState extends State<PO43Titrate> {
                               child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     textStyle: styledata,
-                                    primary: Colors.green,
+                                    // primary: Colors.green,
                                     /* padding: EdgeInsets.symmetric(
                                                               horizontal: 50,
                                                               vertical: 20), */

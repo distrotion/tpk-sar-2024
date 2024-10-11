@@ -1374,7 +1374,6 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
                                                     'requestHeadData[0]: ${requestHeadData[0]}');
                                                 print(
                                                     'requestHeadData[0].custShort: ${requestHeadData[4].custShort}'); */
-
                                         }
                                       },
                                     ),
@@ -1481,7 +1480,7 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
                                                   style: styledata),
                                               style: ElevatedButton.styleFrom(
                                                 textStyle: styledata,
-                                                primary: Colors.blue,
+                                                // primary: Colors.blue,
                                                 /* padding: EdgeInsets.symmetric(
                                                     horizontal: 30,
                                                     vertical: 20), */
@@ -1536,7 +1535,7 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
                                           child: ElevatedButton(
                                               style: ElevatedButton.styleFrom(
                                                 textStyle: styledata,
-                                                primary: Colors.blue,
+                                                // primary: Colors.blue,
                                                 /* padding: EdgeInsets.symmetric(
                                                     horizontal: 50,
                                                     vertical: 20), */

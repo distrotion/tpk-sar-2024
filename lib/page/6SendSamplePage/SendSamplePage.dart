@@ -261,10 +261,10 @@ class _SendSampleDataState extends State<SendSampleData> {
         context
             .read<ManageDataSendSample>()
             .add(SendSamplePageEvent.sendSample);
-      //  Navigator.pop(context);
+        //  Navigator.pop(context);
       },
       onCancelBtnTap: () {
-      //  Navigator.pop(context);
+        //  Navigator.pop(context);
       },
     );
   }
@@ -841,7 +841,7 @@ class _SendSampleDataState extends State<SendSampleData> {
                                 child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
                                       textStyle: styledata,
-                                      primary: Colors.blue,
+                                      // primary: Colors.blue,
                                       /* padding: EdgeInsets.symmetric(
                                                       horizontal: 50,
                                                       vertical: 20), */

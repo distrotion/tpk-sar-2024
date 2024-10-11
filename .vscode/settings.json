@@ -1,7 +1,8 @@
 {
-    "cSpell.enableFiletypes": [
-        "bat",
-        "csv",
-        "xml"
-    ]
+  "cSpell.enableFiletypes": [
+    "bat",
+    "csv",
+    "xml"
+  ],
+  "dart.flutterSdkPath": ".fvm/versions/3.13.6"
 }
